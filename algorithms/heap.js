@@ -8,11 +8,11 @@ function heapSort(arr){
         i--
     }
 
-    // while (k >= 0) {
-    //     [arr[0], arr[k]] = [arr[k], arr[0]]
-    //     createHeap(arr, k, 0)
-    //     k--
-    // }
+    while (k >= 0) {
+        [arr[0], arr[k]] = [arr[k], arr[0]]
+        createHeap(arr, k, 0)
+        k--
+    }
 
     function createHeap(array, len, i){
         let largest = i;
