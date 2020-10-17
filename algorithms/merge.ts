@@ -1,18 +1,18 @@
-function mergeSort(unsorted){
+function mergeSort(unsorted:number[]){
     console.log(unsorted)
     if (unsorted.length <= 1){
         return unsorted
     }
-    const middle = Math.floor(unsorted.length/2)
-    const left = unsorted.slice(0,middle)
-    const right= unsorted.slice(middle)
+    const middle: number = Math.floor(unsorted.length/2)
+    const left: number[] = unsorted.slice(0,middle)
+    const right:number[]= unsorted.slice(middle)
     return merge(mergeSort(left), mergeSort(right))
 }
 
-function merge(left, right) {
-    let result = [];
-    let leftInd = 0;
-    let rightInd = 0;
+function merge(left:number[], right:number[]) {
+    let result:number[] = [];
+    let leftInd:number = 0;
+    let rightInd:number = 0;
     while (leftInd < left.length && rightInd < right.length){
         if (left[leftInd] < right[rightInd]){
             result.push(left[leftInd])
