@@ -1,8 +1,9 @@
-function bubble(arr) {
-    let swapped
+function bubble(arr:number[]) {
+    let swapped:boolean
     do {
         swapped = false;
         for (let i = 0; i < arr.length; i++){
+            let temp:number
             if(arr[i] > arr[i+1]){
                 temp = arr[i];
                 arr[i] = arr[i+1];
