@@ -42,6 +42,10 @@ class MergeVis extends Component <IProps, IState>{
         this.setState({array})
     }
 
+    mergeSort(){
+        // ############YOU ARE HERE####################
+    }
+
     render(){
         const {array} = this.state
 
@@ -60,6 +64,7 @@ class MergeVis extends Component <IProps, IState>{
                 ))}
                 </div>
                 <button onClick={() => this.resetArray()}>Generate New Array</button>
+                <button onClick={() => this.mergeSort()}>Merge Sort</button>
             </div>
         )
     }
