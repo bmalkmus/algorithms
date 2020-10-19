@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {getMergeAnimations} from '../../utilities/mergeAnimation'
 import "./style.css";
 
 const animationSpeedMS: number = 1;
@@ -43,7 +44,29 @@ class MergeVis extends Component <IProps, IState>{
     }
 
     mergeSort(){
-        // ############YOU ARE HERE####################
+        const animations: number[]|object[] = getMergeAnimations(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const arrayBars = document.getElementsByClassName('array.bar');
+            const isColorChange:boolean = i % 3 !==2;
+            if(isColorChange) {
+                const [barOneInd, barTwoIdx] =animations[i];
+                const barOneStyle = arrayBars[barOneInd].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+
+                const color = i % 3 === 0 ? compareColor : mainBarColor;
+                setTimeout(()=>{
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * animationSpeedMS);
+            }
+            else{
+                setTimeout(()=>{
+                    const [barOneInd, newHeight] =animations[i];
+                    const barOneStyle = arrayBars[barOneInd].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * animationSpeedMS);
+            }
+        }
     }
 
     render(){
