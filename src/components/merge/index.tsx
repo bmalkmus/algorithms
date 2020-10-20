@@ -18,6 +18,12 @@ interface IState {
     array: number[]
 }
 
+// interface HTMLCollectionOf<T extends Element> extends HTMLCollection {
+//     item(index: number): T;
+//     namedItem(name: string): T;
+//     [index: number]: T;
+// }
+
 function randomIntRange(min:number, max:number){
     return Math.floor(Math.random() * (max-min+1)+min)
 }
@@ -44,28 +50,30 @@ class MergeVis extends Component <IProps, IState>{
     }
 
     mergeSort(){
-        const animations: number[]|object[] = getMergeAnimations(this.state.array);
+        const animations = getMergeAnimations(this.state.array);
         for(let i = 0; i < animations.length; i++){
-            const arrayBars = document.getElementsByClassName('array.bar');
-            const isColorChange:boolean = i % 3 !==2;
-            if(isColorChange) {
-                const [barOneInd, barTwoIdx] =animations[i];
-                const barOneStyle = arrayBars[barOneInd].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+            const arrayBars = document.querySelectorAll<HTMLElement>('array-bar');
+            // const isColorChange:boolean = i % 3 !==2;
+            console.log()
+            console.log(animations[i])
+            // if(isColorChange) {
+            //     const [barOneInd,barTwoIdx] =animations[i];
+            //     const barOneStyle = arrayBars[barOneInd].style;
+            //     const barTwoStyle = arrayBars[barTwoIdx].style;
 
-                const color = i % 3 === 0 ? compareColor : mainBarColor;
-                setTimeout(()=>{
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
-                }, i * animationSpeedMS);
-            }
-            else{
-                setTimeout(()=>{
-                    const [barOneInd, newHeight] =animations[i];
-                    const barOneStyle = arrayBars[barOneInd].style;
-                    barOneStyle.height = `${newHeight}px`;
-                }, i * animationSpeedMS);
-            }
+            //     const color = i % 3 === 0 ? compareColor : mainBarColor;
+            //     setTimeout(()=>{
+            //         barOneStyle.backgroundColor = color;
+            //         barTwoStyle.backgroundColor = color;
+            //     }, i * animationSpeedMS);
+            // }
+            // else{
+            //     setTimeout(()=>{
+            //         const [barOneInd, newHeight] =animations[i];
+            //         const barOneStyle = arrayBars[barOneInd].style;
+            //         barOneStyle.height = `${newHeight}px`;
+            //     }, i * animationSpeedMS);
+            // }
         }
     }
 
