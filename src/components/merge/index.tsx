@@ -8,7 +8,7 @@ const numBars: number = 310;
 
 const mainBarColor: string = "yellowgreen";
 
-const compareColor: string = '';
+const compareColor: string = 'red';
 
 interface IProps {
 
@@ -57,20 +57,20 @@ class MergeVis extends Component <IProps, IState>{
             const isColorChange:boolean = i % 3 !==2;
             if(isColorChange) {
                 const [barOneInd,barTwoIdx] =[curAnimation[0],curAnimation[1]];
-                const barOneStyle = arrayBars[barOneInd].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const barOneStyle = arrayBars[barOneInd]
+                const barTwoStyle = arrayBars[barTwoIdx]
 
                 const color = i % 3 === 0 ? compareColor : mainBarColor;
                 setTimeout(()=>{
-                    barOneStyle.backgroundColor = color;
-                    barTwoStyle.backgroundColor = color;
+                    barOneStyle.setAttribute("style", `background-color:${color};`)
+                    barTwoStyle.setAttribute("style", `background-color:${color};`)
                 }, i * animationSpeedMS);
             }
             else{
                 setTimeout(()=>{
                     const [barOneInd, newHeight] =[curAnimation[0],curAnimation[1]];
-                    const barOneStyle = arrayBars[barOneInd].style;
-                    barOneStyle.height = `${newHeight}px`;
+                    const barOneStyle = arrayBars[barOneInd]
+                    barOneStyle.setAttribute("style", `height:${newHeight}px;`)
                 }, i * animationSpeedMS);
             }
         }
