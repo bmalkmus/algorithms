@@ -62,6 +62,7 @@ class MergeVis extends Component <IProps, IState>{
 
                 const color = i % 3 === 0 ? compareColor : mainBarColor;
                 setTimeout(()=>{
+                    console.log(barOneStyle)
                     barOneStyle.setAttribute("style", `background-color:${color};`)
                     barTwoStyle.setAttribute("style", `background-color:${color};`)
                 }, i * animationSpeedMS);
